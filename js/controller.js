@@ -2,16 +2,13 @@ var app = angular.module('reddit');
 
 app.controller('PostsController', function($scope, FirebaseService){
 
-$scope.getPosts = function(){
-	FirebaseService.postsDev($scope.posts).then(function(response){
-
-		});
-	};
-	$scope.getPosts();
+	FirebaseService.postsDev().then(function(response) {
+		$scope.posts = response;
+	})
 
 $scope.addPost = function(){
-	FirebaseService.addNewPost($scope.newPost).then(function(){
-      $scope.getPosts();
+	FirebaseService.addNewPost($scope.newPosts).then(function(){
+      FirebaseService.postsDev();
 	});
 };
 });
