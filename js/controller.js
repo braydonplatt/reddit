@@ -8,4 +8,10 @@ $scope.getPosts = function(){
 		});
 	};
 	$scope.getPosts();
+
+$scope.addPost = function(){
+	FirebaseService.addNewPost($scope.newPost).then(function(){
+      $scope.getPosts();
+	});
+};
 });
